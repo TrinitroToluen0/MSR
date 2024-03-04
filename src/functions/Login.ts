@@ -46,7 +46,7 @@ export class Login {
             await saveSessionData(this.bot.config.sessionPath, page.context(), email, this.bot.isMobile)
 
             // We're done logging in
-            this.bot.log('LOGIN', 'Logged in successfully')
+            // this.bot.log('LOGIN', 'Logged in successfully')
 
         } catch (error) {
             // Throw and don't continue

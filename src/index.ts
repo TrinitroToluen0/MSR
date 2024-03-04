@@ -145,7 +145,7 @@ export class MicrosoftRewardsBot {
 
         // If runOnZeroPoints is false and 0 points to earn, don't continue
         if (!this.config.runOnZeroPoints && this.collectedPoints === 0) {
-            log('MAIN', 'No points to earn and "runOnZeroPoints" is set to "false", stopping!')
+            log(account.email, 'No points to earn and "runOnZeroPoints" is set to "false", stopping!')
 
             // Close desktop browser
             return await this.closeBrowser(browser, account.email)
@@ -191,7 +191,7 @@ export class MicrosoftRewardsBot {
         const browser = await this.browserFactory.createBrowser(account.proxy, account.email)
         this.homePage = await browser.newPage()
 
-        log('MAIN', 'Starting MOBILE browser')
+        log(account.email, 'Starting MOBILE browser')
 
         // Login into MS Rewards, then go to rewards homepage
         await this.login.login(this.homePage, account.email, account.password)
@@ -201,7 +201,7 @@ export class MicrosoftRewardsBot {
 
         // If no mobile searches data found, stop (Does not exist on new accounts)
         if (!data.userStatus.counters.mobileSearch) {
-            log('MAIN', 'No mobile searches found, stopping!')
+            log(account.email, 'No mobile searches found, stopping!')
 
             // Close mobile browser
             return await this.closeBrowser(browser, account.email)
