@@ -69,7 +69,7 @@ export class MicrosoftRewardsBot {
     }
 
     private runMaster() {
-        log('MAIN-PRIMARY', 'Primary process started')
+        // log('MAIN-PRIMARY', 'Primary process started')
 
         const accountChunks = this.utils.chunkArray(this.accounts, this.config.clusters)
 
@@ -93,7 +93,7 @@ export class MicrosoftRewardsBot {
     }
 
     private runWorker() {
-        log('MAIN-WORKER', `Worker ${process.pid} spawned`)
+        // log('MAIN-WORKER', `Worker ${process.pid} spawned`)
         // Receive the chunk of accounts from the master
         process.on('message', async ({ chunk }) => {
             await this.runTasks(chunk)
@@ -130,18 +130,18 @@ export class MicrosoftRewardsBot {
         const browser = await this.browserFactory.createBrowser(account.proxy, account.email)
         this.homePage = await browser.newPage()
 
-        log('MAIN', 'Starting DESKTOP browser')
+        log(account.email, 'Starting DESKTOP browser')
 
         // Login into MS Rewards, then go to rewards homepage
         await this.login.login(this.homePage, account.email, account.password)
         await this.browser.func.goHome(this.homePage)
 
         const data = await this.browser.func.getDashboardData()
-        log('MAIN-POINTS', `Current point count: ${data.userStatus.availablePoints}`)
+        log(account.email, `Current point count: ${data.userStatus.availablePoints}`)
 
         const earnablePoints = await this.browser.func.getEarnablePoints()
         this.collectedPoints = earnablePoints
-        log('MAIN-POINTS', `You can earn ${earnablePoints} points today`)
+        log(account.email, `You can earn ${earnablePoints} points today`)
 
         // If runOnZeroPoints is false and 0 points to earn, don't continue
         if (!this.config.runOnZeroPoints && this.collectedPoints === 0) {

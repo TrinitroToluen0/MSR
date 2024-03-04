@@ -1,9 +1,9 @@
 {
     "baseURL": "https://rewards.bing.com",
     "sessionPath": "sessions",
-    "headless": false,
+    "headless": true,
     "runOnZeroPoints": false,
-    "clusters": 1,
+    "clusters": 4,
     "saveFingerprint": false,
     "workers": {
         "doDailySet": true,
@@ -13,7 +13,7 @@
         "doMobileSearch": true
     },
     "searchSettings": {
-        "useGeoLocaleQueries": false,
+        "useGeoLocaleQueries": true,
         "scrollRandomResults": true,
         "clickRandomResults": true,
         "searchDelay": {

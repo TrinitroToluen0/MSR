@@ -49,7 +49,7 @@ class Browser {
             await saveFingerprintData(this.bot.config.sessionPath, email, this.bot.isMobile, fingerpint)
         }
 
-        this.bot.log('BROWSER', `Created browser with User-Agent: "${fingerpint.fingerprint.navigator.userAgent}"`)
+        this.bot.log(email, `Created browser with User-Agent: "${fingerpint.fingerprint.navigator.userAgent}"`)
 
         return context
     }

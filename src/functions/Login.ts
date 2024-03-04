@@ -34,7 +34,7 @@ export class Login {
                 }
 
                 await this.execLogin(page, email, password)
-                this.bot.log('LOGIN', 'Logged into Microsoft successfully')
+                this.bot.log(email, 'Logged into Microsoft successfully')
             } else {
                 this.bot.log('LOGIN', 'Already logged in')
             }
@@ -60,7 +60,7 @@ export class Login {
             await page.fill('#i0116', email)
             await page.click('#idSIButton9')
 
-            this.bot.log('LOGIN', 'Email entered successfully')
+            this.bot.log(email, 'Email entered successfully')
 
             try {
                 // Enter password
@@ -86,7 +86,7 @@ export class Login {
                 await page.keyboard.press('Enter')
             }
 
-            this.bot.log('LOGIN', 'Password entered successfully')
+            this.bot.log(email, 'Password entered successfully')
 
         } catch (error) {
             this.bot.log('LOGIN', 'An error occurred:' + error, 'error')
@@ -105,7 +105,7 @@ export class Login {
 
     private async checkBingLogin(page: Page): Promise<void> {
         try {
-            this.bot.log('LOGIN-BING', 'Verifying Bing login')
+            // this.bot.log('LOGIN-BING', 'Verifying Bing login')
             await page.goto('https://www.bing.com/fd/auth/signin?action=interactive&provider=windows_live_id&return_url=https%3A%2F%2Fwww.bing.com%2F')
 
             const maxIterations = 5
@@ -119,7 +119,7 @@ export class Login {
                     const loggedIn = await this.checkBingLoginStatus(page)
                     // If mobile browser, skip this step
                     if (loggedIn || this.bot.isMobile) {
-                        this.bot.log('LOGIN-BING', 'Bing login verification passed!')
+                        // this.bot.log('LOGIN-BING', 'Bing login verification passed!')
                         break
                     }
                 }
