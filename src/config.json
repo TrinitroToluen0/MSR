@@ -17,13 +17,12 @@
         "scrollRandomResults": true,
         "clickRandomResults": true,
         "searchDelay": {
-            "min": 10000,
-            "max": 20000
+            "min": 50000,
+            "max": 10000
         },
         "retryMobileSearch": true
     },
     "webhook": {
-        "enabled": false,
-        "url": ""
+        "enabled": true,
     }
 }
