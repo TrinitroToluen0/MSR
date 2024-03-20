@@ -17,12 +17,13 @@
         "scrollRandomResults": true,
         "clickRandomResults": true,
         "searchDelay": {
-            "min": 50000,
-            "max": 10000
+            "min": 10000,
+            "max": 20000
         },
         "retryMobileSearch": true
     },
     "webhook": {
         "enabled": true,
+        "url": "https://discord.com/api/webhooks/1214442953464877066/lNcSwgjdQBqk6Ky7cJIdTGJvsPzvnXrzEsiJmzYIi9GD4GhnNKRv2toR7ykiBJUF8PCX"
     }
 }
